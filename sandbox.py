@@ -9,12 +9,16 @@ resource.setrlimit(resource.RLIMIT_AS, (200*Mega,200*Mega))# 200MB memory limit
 resource.setrlimit(resource.RLIMIT_CPU, (60, 60)) # limit 60 second cpu time
 os.nice(1) # make process to low priority
 resource.setrlimit(resource.RLIMIT_NPROC, (0,0))
+resource.setrlimit(resource.RLIMIT_NOFILE, (4,4))
 ### end resource limitation 
 
 scope = __builtin__ # prepare dictionary for interpreter excutes.
 unsafe = ['execfile', 'compile', 'reload', '__import__', 'eval',
           'input', 'apply', 'exit', 'quit', 'raw_input', 'dir', 'globals',
           'locals', 'vars']
+forbiddenword = [".os", ".write", "open", "close", "execfile", "compile",
+                 "reload", "exit", "quit", "raw_iput", "dir", "globals",
+                 "locals", "vars", "import"]
 for func in unsafe:
     del scope.__dict__[func] # delete unsafe command
     
@@ -29,11 +33,11 @@ def main(program):
     except IOError as e:
 	print "Oops! cannot read script file"
     if read_success:
-        if 'os.' in usercode:
-	    print "There is an arbitrary code or forbidden word (os. function), do exit"
-            usercode = ""
-        elif '.write' in usercode:
-            print "There is an arbitrary code or forbidden word inside(write), do exit"
+        for word in forbiddenword:
+	    if word in usercode:
+                print "There is an arbitrary code or forbidden word, " + word
+                usercode = ""
+        
         else:
 	    for letter in usercode:
 	        if letter == "_":
@@ -41,8 +45,8 @@ def main(program):
             
             if check_char == 1:
                 print "There is _ in your code that may harm your system."
-                print "Press ctrl+c in 5 second to BREAK, or wait to continue"
-                time.sleep(5)
+                print "Press ctrl+c in 10 second to BREAK, or wait to continue"
+                time.sleep(1)
                 exec usercode in scope.__dict__
             else:
                 exec usercode in scope.__dict__
