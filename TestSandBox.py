@@ -4,7 +4,7 @@ def count():
     for i in range(10):
         print 10 - i
     print '-' * 40
-chosss = 1
+
 def fib(n):
     print 'Test Fiboncci program'
     result = []
@@ -13,6 +13,6 @@ def fib(n):
         result.append(a)
         a, b = b, a + b
     return result
-    nice(1)
+    
 count()
 print fib(10)
