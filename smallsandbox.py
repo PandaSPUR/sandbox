@@ -3,8 +3,7 @@ def main():
     usercode = ""
     try:
 	      usercode = file("TestSandBox.py").read()
-	      print "Read script file successed"		
-	      read_success = 1
+	      print "Read script file successed"
     except IOError as e:
 	      print "Oops! cannot read script file"
     exec usercode
