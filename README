@@ -1,0 +1,27 @@
+++++++++++++++++++++++++++++++++++
+Simple Turing Completeness Sandbox
+++++++++++++++++++++++++++++++++++
+
+:Author: Prasit Saebae
+:Contact: psb275@nyu.edu
+
+Introduction
+============
+This sandbox is based on python programming language. It is used to excute untrusted code 
+that prevents arbitrary code damage your system
+
+
+To run sandbox from the command line, run follow below syntax 
+=============================================================
+python <sandbox.py> <untrustcode.py>
+
+It should be run in current directory of sandbox.py or insert file in front of script.
+
+
+For untrusted code
+==================
+This sandbox is sub-language of python so it uses same systax as python language.
+The tutorial for python is http://docs.python.org/2/tutorial/ 
+
+However, the sandbox build base on linux or ubuntu environment so some function will not work 
+on windows such as control resource on etc.
