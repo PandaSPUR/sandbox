@@ -32,7 +32,7 @@ def main(program):
         if 'os.' in usercode:
 	    print "There is an arbitrary code or forbidden word (os. function), do exit"
             usercode = ""
-        elif 'write' in usercode:
+        elif '.write' in usercode:
             print "There is an arbitrary code or forbidden word inside(write), do exit"
         else:
 	    for letter in usercode:
