@@ -18,7 +18,7 @@ unsafe = ['execfile', 'compile', 'reload', '__import__', 'eval',
           'locals', 'vars']
 forbiddenword = [".os", ".write", "open", "close", "execfile", "compile",
                  "reload", "eval", "input", "apply", "exit", "quit", "raw_iput", 
-                 "dir", "globals", "locals", "vars", "import"]
+                 "dir", "globals", "locals", "vars", "import", "_"]
 for func in unsafe:
     del scope.__dict__[func] # delete unsafe command
     
