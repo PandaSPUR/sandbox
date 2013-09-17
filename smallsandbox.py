@@ -1,6 +1,6 @@
 def main():
 # main program for reading unsafe code to variable, executing code if it's safe.
-    
+    usercode = ""
     try:
 	      usercode = file("TestSandBox.py").read()
 	      print "Read script file successed"		
