@@ -37,18 +37,6 @@ def main(program):
 	    if word in usercode:
                 print "There is an arbitrary code or forbidden word, " + word
                 usercode = ""
-        
-        else:
-	    for letter in usercode:
-	        if letter == "_":
-                    check_char = 1
-            
-            if check_char == 1:
-                print "There is _ in your code that may harm your system."
-                print "Press ctrl+c in 10 second to BREAK, or wait to continue"
-                time.sleep(1)
-                exec usercode in scope.__dict__
-            else:
-                exec usercode in scope.__dict__
+        exec usercode in scope.__dict__
 
 main(sys.argv[1])
