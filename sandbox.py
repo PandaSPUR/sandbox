@@ -9,8 +9,6 @@ resource.setrlimit(resource.RLIMIT_AS, (200*Mega,200*Mega))# 200MB memory limit
 resource.setrlimit(resource.RLIMIT_CPU, (60, 60)) # limit 60 second cpu time
 os.nice(1) # make process to low priority
 resource.setrlimit(resource.RLIMIT_NPROC, (0,0))
-path = os.getcwd()
-os.chmod(path, 333)
 ### end resource limitation 
 
 scope = __builtin__ # prepare dictionary for interpreter excutes.
@@ -32,8 +30,10 @@ def main(program):
 	print "Oops! cannot read script file"
     if read_success:
         if 'os.' in usercode:
-	    print "There is an arbitrary code inside, do exit"
+	    print "There is an arbitrary code or forbidden word (os. function), do exit"
             usercode = ""
+        elif 'write' in usercode:
+            print "There is an arbitrary code or forbidden word inside(write), do exit"
         else:
 	    for letter in usercode:
 	        if letter == "_":
