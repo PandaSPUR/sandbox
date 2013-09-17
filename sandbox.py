@@ -41,8 +41,8 @@ def main(program):
             
             if check_char == 1:
                 print "There is _ in your code that may harm your system."
-                print "Press ctrl+c in 10 second to BREAK, or wait to continue"
-                time.sleep(10)
+                print "Press ctrl+c in 5 second to BREAK, or wait to continue"
+                time.sleep(5)
                 exec usercode in scope.__dict__
             else:
                 exec usercode in scope.__dict__
